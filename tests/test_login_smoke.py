@@ -32,12 +32,12 @@ def test_login_smoke(remote_driver):
 def test_login_form(remote_driver):
     remote_driver.get("https://my.luckyfeed.pro/login")
     login_field = remote_driver.find_element('xpath',
-                                             '//*[@id="__layout"]/div/div[1]/div[2]/div/div/div/form/div[1]/div/div/input')
+                                             '//input[@type="email"]')
     password_field = remote_driver.find_element('xpath',
-                                                '//*[@id="__layout"]/div/div[1]/div[2]/div/div/div/form/div[2]/div/div/input')
+                                                '//input[@type="password"]')
 
     submit_button = remote_driver.find_element('xpath',
-                                               '//*[@id="__layout"]/div/div[1]/div[2]/div/div/div/form/div[4]/button')
+                                                '//button[@type="submit"]')
 
     # todo parametrize
     login_field.send_keys("autotest@lucky-team.pro")
