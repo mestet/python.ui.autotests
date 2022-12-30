@@ -23,7 +23,7 @@ https://docs.docker.com/engine/install/ubuntu/
 
 ## Selenium standalone
 ```bash
-docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome
+docker run -d -p 4444:4444 -v /dev/shm:/dev/shm --name standalone-chrome selenium/standalone-chrome
 ```
 
 ## Installed Python

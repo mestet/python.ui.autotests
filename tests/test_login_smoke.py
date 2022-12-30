@@ -3,8 +3,10 @@ import allure
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from utils.page import find_element
 
 
+# todo separate module for browser with allure steps
 @pytest.fixture
 def remote_driver():
     options = webdriver.ChromeOptions()
@@ -22,6 +24,7 @@ def remote_driver():
 @allure.testcase("LuckyFeed login button")
 def test_login_smoke(remote_driver):
     remote_driver.get("https://luckyfeed.pro/")
+    find_element(remote_driver, By.CLASS_NAME, 'header__link--secondary')
     login_button = remote_driver.find_element(By.CLASS_NAME, "header__link--secondary")
     assert login_button is not None
     login_button.click()
@@ -29,19 +32,17 @@ def test_login_smoke(remote_driver):
 
 
 @allure.testcase("LuckyFeed login button")
-def test_login_form(remote_driver):
+def test_login_form(remote_driver, autotest_user):
     remote_driver.get("https://my.luckyfeed.pro/login")
-    login_field = remote_driver.find_element('xpath',
-                                             '//input[@type="email"]')
-    password_field = remote_driver.find_element('xpath',
-                                                '//input[@type="password"]')
-
-    submit_button = remote_driver.find_element('xpath',
-                                                '//button[@type="submit"]')
+    login_field = find_element(remote_driver, 'xpath', '//input[@type="email"]')
+    password_field = find_element(remote_driver, 'xpath', '//input[@type="password"]')
+    submit_button = find_element(remote_driver, 'xpath', '//button[@type="submit"]')
 
     # todo parametrize
     login_field.send_keys("autotest@lucky-team.pro")
     password_field.send_keys("d2f0fd3eef")
     submit_button.click()
     time.sleep(10) # todo do not wait or wait less
-    assert remote_driver.current_url.startswith("https://my.luckyfeed.pro/news")
+
+    user_email = find_element(remote_driver, 'xpath', '//div[@class="lna-profile__avatar-email"]')
+    assert user_email.text == 'autotest@lucky-team.pro'
