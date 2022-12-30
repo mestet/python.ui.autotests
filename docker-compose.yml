@@ -1,0 +1,20 @@
+services:
+  standalone-chrome:
+    image: selenium/standalone-chrome
+    container_name: standalone-chrome
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - 4444:4444
+
+  pytest-runner:
+    depends_on:
+      - standalone-chrome
+    build:
+      context: .
+    container_name: pytest-runner
+    links:
+      - standalone-chrome
+    environment:
+      CHROME_HOST: standalone-chrome
+      CHROME_PORT: 4444

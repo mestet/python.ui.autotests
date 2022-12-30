@@ -1,7 +1,9 @@
-FROM python:3.10
+FROM python:3.10-slim
 
-COPY . .
+WORKDIR /app
 
-RUN pip install -r requirements.txt
+COPY . /app
 
-CMD ["python3 -m pytest"]
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+
+CMD ["python3", "-m", "pytest"]
