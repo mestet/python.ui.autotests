@@ -1,0 +1,7 @@
+pytest
+pytest-selenium
+allure-pytest
+selenium
+webdriver-manager
+requests
+urllib3
