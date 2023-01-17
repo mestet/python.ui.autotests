@@ -27,7 +27,7 @@ def test_login_form(chrome_browser, autotest_user):
     login_field.send_keys("autotest@lucky-team.pro")
     password_field.send_keys("d2f0fd3eef")
     submit_button.click()
-    time.sleep(10)  # todo do not wait or wait less
+    time.sleep(10)  # todo do not wait or wait less ex WebDriverWait(driver, 30).until()
 
     user_email = find_element(chrome_browser, 'xpath', '//div[@class="lna-profile__avatar-email"]')
     assert user_email.text == 'autotest@lucky-team.pro'
