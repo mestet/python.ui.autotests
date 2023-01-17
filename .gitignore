@@ -1,6 +1,10 @@
 # IDE
-/.idea
-/.vscode
+.idea/
+.vscode/
+.fleet/
 
 # pytest
-/.pytest_cache
+.pytest_cache/
+
+# virtual env
+venv/

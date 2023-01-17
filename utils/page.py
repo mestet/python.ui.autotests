@@ -1,6 +1,7 @@
 import allure
 from selenium.common.exceptions import NoSuchElementException
 
+
 # todo move to browser class
 def find_element(driver, locator_type, locator):
     with allure.step(f'Searching for element {locator_type}: {locator}'):

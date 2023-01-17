@@ -17,7 +17,7 @@ settings = Settings()
 @pytest.fixture
 def chrome_browser():
     browser = BrowserChrome(
-        remote_host=f'http://{settings.chrome_host}',
+        remote_host=settings.chrome_host,
         remote_port=settings.chrome_port
     )
     yield browser.driver

@@ -1,20 +1,44 @@
+version: '3.9'
+
 services:
-  standalone-chrome:
-    image: selenium/standalone-chrome
-    container_name: standalone-chrome
-    volumes:
-      - /dev/shm:/dev/shm
+  chrome:
+    image: selenium/node-chrome:108.0
+    container_name: chrome
+    shm_size: 2gb
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_INSTANCES=3
+      - SE_NODE_MAX_SESSIONS=3
+
+  selenium-hub:
+    image: selenium/hub:4.7.2
+    container_name: selenium-hub
     ports:
-      - 4444:4444
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+    depends_on:
+      - chrome
+    healthcheck:
+      test: curl --fail http://localhost:4444 || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 6
 
   pytest-runner:
-    depends_on:
-      - standalone-chrome
     build:
       context: .
     container_name: pytest-runner
-    links:
-      - standalone-chrome
     environment:
-      CHROME_HOST: standalone-chrome
+      CHROME_HOST: selenium-hub
       CHROME_PORT: 4444
+    depends_on:
+      selenium-hub:
+        condition: service_healthy
+
+networks:
+  default:
+    name: ui.autotest-production
+    driver: bridge
