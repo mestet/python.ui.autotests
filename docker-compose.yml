@@ -37,6 +37,8 @@ services:
     depends_on:
       selenium-hub:
         condition: service_healthy
+    volumes:
+      - ./allure-result:/app/allure-result
 
 networks:
   default:

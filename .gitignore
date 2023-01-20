@@ -8,3 +8,7 @@
 
 # virtual env
 venv/
+
+# allure
+allure-report/
+allure-result/
