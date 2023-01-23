@@ -11,6 +11,8 @@ stages:
 run-test-job:
     stage: test
     image: python:3.10-slim
+    services:
+      - selenium/standalone-chrome
     script:
       - pip install -r requirements.txt
       - python3 -m pytest --alluredir=allure-result

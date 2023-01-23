@@ -7,7 +7,7 @@ from utils.browser import BrowserChrome
 
 
 class Settings(BaseSettings):
-    chrome_host: str = 'localhost'
+    chrome_host: str = 'selenium__standalone-chrome'
     chrome_port: int = 4444
 
 
