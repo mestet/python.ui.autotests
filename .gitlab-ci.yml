@@ -12,6 +12,5 @@ run-test-job:
     stage: test
     image: python:3.10-slim
     script:
-      - python --version
       - pip install -r requirements.txt
-      - pytest -v
+      - python3 -m pytest --alluredir=allure-result
