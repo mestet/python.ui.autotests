@@ -15,7 +15,7 @@ run-test-job:
     artifacts:
       when: always
       paths:
-        - allure_results
+        - allure-result
       expire_in: 1 day
     services:
       - selenium/standalone-chrome
