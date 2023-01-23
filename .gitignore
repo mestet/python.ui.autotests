@@ -11,4 +11,4 @@ venv/
 
 # allure
 allure-report/
-allure-result/
+allure-results/

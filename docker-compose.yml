@@ -38,7 +38,7 @@ services:
       selenium-hub:
         condition: service_healthy
     volumes:
-      - ./allure-result:/app/allure-result
+      - ./allure-results:/app/allure-results
 
 networks:
   default:

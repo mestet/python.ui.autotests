@@ -15,23 +15,23 @@ run-test-job:
     artifacts:
       when: always
       paths:
-        - allure-result
+        - allure-results
       expire_in: 1 day
     services:
       - selenium/standalone-chrome
     script:
       - pip install -r requirements.txt
-      - python3 -m pytest --alluredir=allure-result
+      - python3 -m pytest --alluredir=allure-results
     allow_failure: true
 
 generate_report:
   stage: generate_report
   image: frankescobar/allure-docker-service
   script:
-     - allure generate -c allure-result -o allure-report
+     - allure generate -c allure-results -o allure-report
   artifacts:
     paths:
-      - ./allure-result
+      - ./allure-results
       - ./allure-report
     expire_in: 1 day
   rules:

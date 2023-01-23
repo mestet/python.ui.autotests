@@ -6,4 +6,4 @@ COPY . /app
 
 RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
-CMD ["python3", "-m", "pytest", "--alluredir=allure-result"]
+CMD ["python3", "-m", "pytest", "--alluredir=allure-results"]
