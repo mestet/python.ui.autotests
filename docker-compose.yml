@@ -42,5 +42,5 @@ services:
 
 networks:
   default:
-    name: ui.autotest-production
+    name: ui.autotest
     driver: bridge

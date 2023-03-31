@@ -36,7 +36,7 @@ sudo apt install python3-pip
 
 ## Latest version of tests
 ```bash
-git clone git@gitlab.lucky-team.pro:luckyqa/luckyfeed/ui.autotest-production.git
+git clone 
 ```
 
 ## Install requirements

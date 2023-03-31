@@ -27,6 +27,6 @@ def chrome_browser():
 @pytest.fixture
 def autotest_user():
     user = namedtuple('TestUser', ['email', 'password'])
-    user.email = 'autotest@lucky-team.pro'
-    user.password = 'd2f0fd3eef'
+    user.email = 'autotest@testmail.com'
+    user.password = 'password'
     return user
