@@ -1,8 +1,10 @@
-pytest==7.2.1
+pytest==7.4.2
 pytest-selenium
+pytest-html
 allure-pytest
 selenium
 webdriver-manager
 requests
 urllib3
 pydantic
+pydantic-settings

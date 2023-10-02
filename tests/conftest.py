@@ -1,13 +1,13 @@
 from collections import namedtuple
 
 import pytest
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
 from utils.browser import BrowserChrome
 
 
 class Settings(BaseSettings):
-    chrome_host: str = 'selenium__standalone-chrome'
+    chrome_host: str = 'localhost'  # 'selenium__standalone-chrome'
     chrome_port: int = 4444
 
 
