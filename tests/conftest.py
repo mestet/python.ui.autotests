@@ -20,8 +20,8 @@ def chrome_browser():
         remote_host=settings.chrome_host,
         remote_port=settings.chrome_port
     )
-    yield browser.driver
-    browser.driver.quit()
+    yield browser
+    browser.quit()
 
 
 @pytest.fixture

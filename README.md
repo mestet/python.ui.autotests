@@ -46,8 +46,14 @@ pip install -r requirements.txt
 
 ## Launch tests
 ```bash
-python3 -m pytest
+python3 -m pytest --alluredir=allure-results ./tests
 ```
 
 ## Results
-Results are in console for now.
+```bash
+allure generate allure-results --clean
+```
+And watch report as is, or use allure serve
+```bash
+allure serve allure-report
+```
